@@ -9,3 +9,4 @@ while True:
     (client_socket, addr) = server_socket.accept() #accept connection
     msg = client_socket.recv(1024)
     print(str(msg, "utf8")) #recive from client
+print("Hello!")
