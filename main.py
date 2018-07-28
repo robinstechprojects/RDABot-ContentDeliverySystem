@@ -1,5 +1,6 @@
 import socket
 import threading
+import random
 
 print("RDA - ContenDeliverySystem started !")
 print("! Please Visit www.sunrobindev.de !")
@@ -15,10 +16,15 @@ class Fred(threading.Thread):
         self.client_socket = client_socket
 
     def run(self):
-        print("connected to ", client_socket, iD)
+        print("connected to ", client_socket)
         while True:
             msg = client_socket.recv(1024)
-            print(str(msg, "utf8")) #recive from client
+            if msg == "gamingsong":
+                file = open('song_list_gaming.txt', 'r')
+                song = file.readlines()
+                file.close()
+                title = random.choice(song)
+                client_socket.send(bytes(song, "utf8"))
 
 
 while True:
