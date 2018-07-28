@@ -24,7 +24,7 @@ class Fred(threading.Thread):
                 song = file.readlines()
                 file.close()
                 title = random.choice(song)
-                client_socket.send(bytes(song, "utf8"))
+                client_socket.send(bytes(title, "utf8"))
 
 
 while True:
