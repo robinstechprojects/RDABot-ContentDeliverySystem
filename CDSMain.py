@@ -8,7 +8,7 @@ while True:
     msg = client_socket.recv(1024)
     print(str(msg, "utf8"))
     if str(msg, "utf8") == "gamingsong":
-        file = open('gaming.txt', 'r')
+        file = open('gamingsongs.txt',mode='r')
         song = file.readlines()
         file.close()
         title = random.choice(song)
