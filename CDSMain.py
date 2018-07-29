@@ -24,3 +24,10 @@ while True:
         title = random.choice(song)
         print("suggested: " + title)
         client_socket.send(bytes(title, "utf8"))
+    elif str(msg, "utf8") == "nightcore":
+        file = open('nightcore.txt',mode='r')
+        song = file.readlines()
+        file.close()
+        title = random.choice(song)
+        print("suggested: " + title)
+        client_socket.send(bytes(title, "utf8"))
