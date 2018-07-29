@@ -1,4 +1,5 @@
 import socket
+import random
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #create socket
 server_socket.bind(('185.249.199.49', 1338)) #Bind socket to IP and port
