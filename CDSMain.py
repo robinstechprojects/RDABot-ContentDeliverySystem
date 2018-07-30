@@ -61,4 +61,5 @@ while True:
         soup =  BeautifulSoup(r.content, "lxml")
         f = soup.find('li', class_="ProfileNav-item--followers")
         title = f.find('a')['title']
+        print("title")
         client_socket.send(bytes(title, "utf8"))
