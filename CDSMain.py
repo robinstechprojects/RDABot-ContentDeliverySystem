@@ -1,5 +1,7 @@
 import socket
 import random
+from bs4 import BeautifulSoup
+import requests
 
 print("RDA-Bot ContentDeliverySystem Started")
 print("! Please visit www.sunrobindev.de !")
@@ -51,4 +53,12 @@ while True:
         file.close()
         title = random.choice(song)
         print("suggested: " + title)
+        client_socket.send(bytes(title, "utf8"))
+    elif str(msg, "utf8") == "tweetrequest":
+        msg2 = client_socket.recv(1024)
+        url = 'https://www.twitter.com/'+str(msg2, "utf8")
+        r = requests.get(url)
+        soup =  BeautifulSoup(r.content, "lxml")
+        f = soup.find('li', class_="ProfileNav-item--followers")
+        title = f.find('a')['title']
         client_socket.send(bytes(title, "utf8"))
