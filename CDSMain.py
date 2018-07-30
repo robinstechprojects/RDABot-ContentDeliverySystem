@@ -55,8 +55,8 @@ while True:
         print("suggested: " + title)
         client_socket.send(bytes(title, "utf8"))
     elif str(msg, "utf8") == "tweetrequest":
-        msg2 = client_socket.recv(1024)
-        url = 'https://www.twitter.com/'+str(msg2, "utf8")
+        arg = client_socket.recv(1024)
+        url = 'https://www.twitter.com/'+str(arg, "utf8")
         r = requests.get(url)
         soup =  BeautifulSoup(r.content, "lxml")
         f = soup.find('li', class_="ProfileNav-item--followers")
